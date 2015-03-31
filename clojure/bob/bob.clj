@@ -1,9 +1,6 @@
 (ns bob
   (:require [clojure.string :refer [blank? upper-case]]))
 
-;; (defn response-for [message]
-;;   "Whatever.")
-
 (defn contains-some-letter? [message]
   (re-find #"[a-zA-Z]" message))
 
