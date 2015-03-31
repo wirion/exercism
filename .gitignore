@@ -1,3 +1,4 @@
 .nrepl-port
 pom.properties
-target
+.lein-repl-history
+clojure/bob/target
