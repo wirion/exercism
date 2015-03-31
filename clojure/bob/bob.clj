@@ -1,19 +1,19 @@
 (ns bob
   (:require [clojure.string :refer [blank? upper-case]]))
 
-;; (defn response-for [addressed-sentence]
+;; (defn response-for [message]
 ;;   "Whatever.")
 
-(defn yelling? [addressed-sentence]
-  (and (re-find #"[A-Z]" addressed-sentence)
-       (= (upper-case addressed-sentence) addressed-sentence)))
+(defn yelling? [message]
+  (and (re-find #"[a-zA-Z]" message)
+       (= (upper-case message) message)))
 
-(defn question? [addressed-sentence]
-  (= \? (last addressed-sentence)))
+(defn question? [message]
+  (= \? (last message)))
 
-(defn response-for [addressed-sentence]
+(defn response-for [message]
   (cond
-    (yelling? addressed-sentence) "Whoa, chill out!"
-    (question? addressed-sentence) "Sure."
-    (blank? addressed-sentence) "Fine. Be that way!"
+    (yelling? message) "Whoa, chill out!"
+    (question? message) "Sure."
+    (blank? message) "Fine. Be that way!"
     :else "Whatever."))
