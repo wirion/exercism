@@ -5,8 +5,8 @@
 ;;   "Whatever.")
 
 (defn yelling? [addressed-sentence]
-  (= (upper-case addressed-sentence) addressed-sentence))
-;; (nil? (re-find #"[a-z]" addressed-sentence)
+  (and (re-find #"[A-Z]" addressed-sentence)
+       (= (upper-case addressed-sentence) addressed-sentence)))
 
 (defn question? [addressed-sentence]
   (= \? (last addressed-sentence)))
