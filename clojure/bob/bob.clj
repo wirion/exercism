@@ -1,5 +1,5 @@
 (ns bob
-  (:require [clojure.string :refer [trim upper-case]]))
+  (:require [clojure.string :refer [blank? upper-case]]))
 
 ;; (defn response-for [addressed-sentence]
 ;;   "Whatever.")
@@ -11,12 +11,9 @@
 (defn question? [addressed-sentence]
   (= \? (last addressed-sentence)))
 
-(defn not-saying-anything? [addressed-sentence]
-  (= "" (trim addressed-sentence)))
-
 (defn response-for [addressed-sentence]
   (cond
     (yelling? addressed-sentence) "Whoa, chill out!"
     (question? addressed-sentence) "Sure."
-    (not-saying-anything? addressed-sentence) "Fine. Be that way!"
+    (blank? addressed-sentence) "Fine. Be that way!"
     :else "Whatever."))
