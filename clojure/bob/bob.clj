@@ -4,9 +4,15 @@
 ;; (defn response-for [message]
 ;;   "Whatever.")
 
+(defn contains-some-letter? [message]
+  (re-find #"[a-zA-Z]" message))
+
+(defn all-letters-are-uppercase? [message]
+  (= (upper-case message) message))
+
 (defn yelling? [message]
-  (and (re-find #"[a-zA-Z]" message)
-       (= (upper-case message) message)))
+  (and (contains-some-letter? message)
+       (all-letters-are-uppercase? message)))
 
 (defn question? [message]
   (= \? (last message)))
