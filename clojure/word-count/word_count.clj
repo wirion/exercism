@@ -1,5 +1,5 @@
 (ns word-count
-  (:require [clojure.string :refer [split]]))
+  (:require [clojure.string :refer [split lower-case]]))
 
 (defn- increase-count [count-map word]
   (assoc count-map word (let [word-count (count-map word)]
@@ -9,5 +9,5 @@
 
 (defn word-count [sentence]
   (let [count-map {}
-        tokens (split sentence #"\s")]
+        tokens (map lower-case (split sentence #"\s+"))]
     (reduce increase-count count-map tokens)))
