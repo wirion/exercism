@@ -1,12 +1,12 @@
 (ns rna-transcription)
 
-(def rna-translation-map
+(def ^:private rna-translation-map
   {\C \G
    \G \C
    \A \U
    \T \A})
 
-(defn valid-dna? [dna-string]
+(defn- valid-dna? [dna-string]
   (if (re-matches #"[CGAT]*" dna-string)
     true
     false))

@@ -1,7 +1,7 @@
 (ns word-count
   (:require [clojure.string :refer [split]]))
 
-(defn add-in [coll word]
+(defn- add-in [coll word]
   (assoc coll word (let [word-count (coll word)]
                      (if word-count
                        (inc word-count)
