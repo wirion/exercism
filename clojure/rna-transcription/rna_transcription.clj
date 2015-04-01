@@ -12,8 +12,7 @@
     false))
 
 (defn to-rna [dna-string]
-  (if (valid-dna? dna-string)
-    (doall (apply str (map
-                       (fn [character] (rna-translation-map character))
-                       dna-string)))
-    (throw (AssertionError. "Non-valid DNA string."))))
+  {:pre [(or (valid-dna? dna-string) (throw (AssertionError. "Non-valid DNA string.")))]}
+  (doall (apply str (map
+                     (fn [character] (rna-translation-map character))
+                     dna-string))))
