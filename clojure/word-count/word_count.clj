@@ -1,7 +1,10 @@
 (ns word-count
   (:require [clojure.string :refer [split lower-case]]))
 
-(defn- increase-count [count-map word]
+(defn- lowercase-tokenize [sentence]
+  (map lower-case (split sentence #"[^a-zA-Z0-9]+")))
+
+(defn- tally-up [count-map word]
   (assoc count-map word (let [word-count (count-map word)]
                      (if word-count
                        (inc word-count)
@@ -9,5 +12,5 @@
 
 (defn word-count [sentence]
   (let [count-map {}
-        tokens (map lower-case (split sentence #"[^a-zA-Z0-9]+"))]
-    (reduce increase-count count-map tokens)))
+        tokens (lowercase-tokenize sentence)]
+    (reduce tally-up count-map tokens)))
