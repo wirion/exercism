@@ -9,5 +9,5 @@
 
 (defn word-count [sentence]
   (let [count-map {}
-        tokens (map lower-case (split sentence #"\s+"))]
+        tokens (map lower-case (split sentence #"[^a-zA-Z0-9]+"))]
     (reduce increase-count count-map tokens)))
