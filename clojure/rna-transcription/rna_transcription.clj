@@ -7,9 +7,7 @@
    \T \A})
 
 (defn- valid-dna? [dna-string]
-  (if (re-matches #"[CGAT]*" dna-string)
-    true
-    false))
+  (re-matches #"[CGAT]*" dna-string))
 
 (defn to-rna [dna-string]
   {:pre [(or (valid-dna? dna-string) (throw (AssertionError. "Non-valid DNA string.")))]}
