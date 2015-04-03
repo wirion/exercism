@@ -2,7 +2,7 @@
   (:require [clojure.string :refer [split lower-case]]))
 
 (defn- lowercase-tokenize [sentence]
-  (map lower-case (split sentence #"[^a-zA-Z0-9]+")))
+  (map lower-case (split sentence #"[^\p{L}\p{Digit}]+")))
 
 (defn- tally-up [count-map word]
   (assoc count-map word (let [word-count (count-map word)]
