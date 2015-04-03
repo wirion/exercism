@@ -15,8 +15,8 @@
   (= \? (last message)))
 
 (defn response-for [message]
-  (cond
-    (yelling? message) "Whoa, chill out!"
-    (question? message) "Sure."
-    (blank? message) "Fine. Be that way!"
-    :else "Whatever."))
+  (condp #(%1 %2) message
+    yelling? "Whoa, chill out!"
+    question? "Sure."
+    blank? "Fine. Be that way!"
+    "Whatever."))
