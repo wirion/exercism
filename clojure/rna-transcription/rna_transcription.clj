@@ -9,8 +9,9 @@
 (defn- valid-dna? [dna-string]
   (re-matches #"[CGAT]*" dna-string))
 
+(defn- to-rna-char [dna-char]
+  (rna-translation-map dna-char))
+
 (defn to-rna [dna-string]
   {:pre [(valid-dna? dna-string)]}
-  (doall (apply str (map
-                     (fn [character] (rna-translation-map character))
-                     dna-string))))
+  (apply str (map to-rna-char dna-string)))
