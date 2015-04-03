@@ -2,7 +2,7 @@
   (:require [clojure.string :refer [blank? upper-case]]))
 
 (defn- contains-some-letter? [message]
-  (re-find #"[a-zA-Z]" message))
+  (re-find #"\p{L}" message))
 
 (defn- all-letters-are-uppercase? [message]
   (= (upper-case message) message))
