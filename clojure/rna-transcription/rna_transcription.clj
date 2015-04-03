@@ -10,7 +10,7 @@
   (re-matches #"[CGAT]*" dna-string))
 
 (defn to-rna [dna-string]
-  {:pre [(or (valid-dna? dna-string) (throw (AssertionError. "Non-valid DNA string.")))]}
+  {:pre [(valid-dna? dna-string)]}
   (doall (apply str (map
                      (fn [character] (rna-translation-map character))
                      dna-string))))
