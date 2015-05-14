@@ -2,3 +2,4 @@
 pom.properties
 .lein-repl-history
 clojure/**/target
+.lein-failures
