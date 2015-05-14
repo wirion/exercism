@@ -5,4 +5,5 @@
   [word candidates]
   "Filters the list for candidate anagrams of word"
   (let [letter-count (frequencies (lower-case word))]
-    (filter #(= letter-count (frequencies (lower-case %))) candidates)))
+    (remove #(= (lower-case %) (lower-case word))
+            (filter #(= letter-count (frequencies (lower-case %))) candidates))))
