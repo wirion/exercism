@@ -1,7 +1,11 @@
 (ns nucleotide-count)
 
-(defn count [nucleotide dna-strand]
-  {:pre [(char? nucleotide) (string? dna-strand)]}
-  ((frequencies dna-strand) nucleotide))
+(defn nucleotide-counts [dna-strand]
+  {:pre [(string? dna-strand)]}
+  (let [counts {\A 0, \T 0, \C 0, \G 0}]
+    (merge counts (frequencies dna-strand))))
 
-(defn nucleotide-counts [dna-strand])
+(defn count [nucleotide dna-strand]
+  (do
+    (when-not (#{\G \C \T \A} nucleotide) (throw (Exception. "invalid nucleotide")))
+    ((nucleotide-counts dna-strand) nucleotide)))
