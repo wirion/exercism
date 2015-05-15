@@ -1,7 +1,12 @@
 (ns beer-song)
 
 (defn- n-bottle-verse [bottle-count]
-  (str bottle-count " bottles of beer on the wall, " bottle-count " bottles of beer.\nTake one down and pass it around, " (dec bottle-count) " bottles of beer on the wall.\n"))
+  (str bottle-count
+       " bottles of beer on the wall, "
+       bottle-count
+       " bottles of beer.\nTake one down and pass it around, "
+       (dec bottle-count)
+       " bottles of beer on the wall.\n"))
 
 (defn- two-bottle-verse []
   "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n")
