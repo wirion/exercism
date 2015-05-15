@@ -28,10 +28,12 @@
 (comment "validate that start-bottle-count is bigger than end-bottle-count")
 (defn sing
   ([start-bottle-count end-bottle-count]
-   (str
-    (verse start-bottle-count)
-    (apply str
-           (for [bottle-count (range (dec start-bottle-count) (dec end-bottle-count) -1)]
-             (str "\n" (verse bottle-count))))))
+   (if (< start-bottle-count end-bottle-count)
+     ""
+     (str
+      (verse start-bottle-count)
+      (apply str
+             (for [bottle-count (range (dec start-bottle-count) (dec end-bottle-count) -1)]
+               (str "\n" (verse bottle-count)))))))
   ([bottle-count]
    (sing bottle-count 0)))
