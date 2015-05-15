@@ -17,17 +17,17 @@
 (defn- zero-bottle-verse []
   "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n")
 
-(comment "validate that bottle-count is a number")
 (defn verse [bottle-count]
+  {:pre [(integer? bottle-count)]}
   (cond
     (= bottle-count 2) (two-bottle-verse)
     (= bottle-count 1) (one-bottle-verse)
     (= bottle-count 0) (zero-bottle-verse)
     :else (n-bottle-verse bottle-count)))
 
-(comment "validate that start-bottle-count is bigger than end-bottle-count")
 (defn sing
   ([start-bottle-count end-bottle-count]
+   {:pre [(integer? start-bottle-count) (integer? end-bottle-count)]}
    (if (< start-bottle-count end-bottle-count)
      ""
      (str
