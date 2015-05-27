@@ -3,4 +3,5 @@
   :url "https://github.com/exercism/xclojure/tree/master/meetup"
   :source-paths [""]
   :test-paths [""]
-  :dependencies [[org.clojure/clojure "1.6.0"]])
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [clj-time "0.9.0"]])
