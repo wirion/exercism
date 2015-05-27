@@ -2,5 +2,8 @@
   (:require [clojure.string :refer [lower-case]]))
 
 (defn transform [old-score-map]
-  (for [[k v] old-score-map]
-    [v k]))
+  (into {}
+        (apply concat
+               (for [[score words] old-score-map]
+                 (for [word words]
+                   [(lower-case word) score])))))
