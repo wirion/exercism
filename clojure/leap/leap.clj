@@ -6,5 +6,5 @@
 (defn leap-year? [year]
   (and
    (divisible-by year 4)
-   (or (divisible-by year 400)          ; makes use of short-circuiting
+   (or (divisible-by year 400)          ; (or) makes use of short-circuiting
        (not (divisible-by year 100)))))
