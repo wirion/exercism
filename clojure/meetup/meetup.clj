@@ -11,7 +11,11 @@
    :saturday 6
    :sunday 7})
 
-(defn- nth-weekday [month year ordinal day-of-week])
+(defn- nth-weekday [month year ordinal day-of-week]
+  (let [offset (t/days (t/day-of-week (t/date-time year month 1)))]
+    (t/day
+     (t/minus
+      (t/date-time year month (+ (* ordinal 7) day-of-week)) offset))))
 
 (defn- last-weekday [month year day-of-week])
 
