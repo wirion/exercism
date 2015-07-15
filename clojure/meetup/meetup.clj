@@ -13,9 +13,10 @@
 
 (defn- nth-weekday [month year which-week day-of-week]
   (let [first-day-of-month-day-of-week (t/day-of-week (t/date-time year month 1))
+        offset (- day-of-week first-day-of-month-day-of-week)
         day-of-month (+ 1
                         (* (- which-week 1) 7)
-                        (mod (- day-of-week first-day-of-month-day-of-week) 7))]
+                        (mod offset 7))]
     day-of-month))
 
 (defn- last-weekday [month year day-of-week])
