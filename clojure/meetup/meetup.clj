@@ -19,7 +19,13 @@
                         (mod offset 7))]
     day-of-month))
 
-(defn- last-weekday [month year day-of-week])
+(defn- last-weekday [month year day-of-week]
+  (let [last-day-of-month-joda-format (t/minus
+                                       (t/plus (t/date-time year month) (t/months 1))
+                                       (t/days 1))
+        last-day-of-month-day-of-week (t/day-of-week last-day-of-month-joda-format)
+        last-day-of-month (t/day last-day-of-month-joda-format)]
+    (- last-day-of-month (mod (- last-day-of-month-day-of-week day-of-week) 7))))
 
 ;; teenth days are from 13th to 19th of each month
 (defn- teenth-weekday [month year day-of-week])
