@@ -28,7 +28,9 @@
     (- last-day-of-month (mod (- last-day-of-month-day-of-week day-of-week) 7))))
 
 ;; teenth days are from 13th to 19th of each month
-(defn- teenth-weekday [month year day-of-week])
+(defn- teenth-weekday [month year day-of-week]
+  (let [thirteenth-day-of-week (t/day-of-week (t/date-time year month 13))]
+    (+ 13 (mod (- day-of-week thirteenth-day-of-week) 7))))
 
 (defn meetup [month year day-keyword nth]
   (let [day-of-week (day-keyword-to-number-map day-keyword)
