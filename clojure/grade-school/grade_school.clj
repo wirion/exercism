@@ -4,7 +4,7 @@
   (merge-with into db {grade-number [name]}))
 
 (defn grade [db grade-number]
-  (get db grade-number []))
+  (db grade-number []))
 
 (defn sorted [db]
   (into (sorted-map) (for [[grade students] db] [grade (sort students)])))
