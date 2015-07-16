@@ -2,21 +2,22 @@
 
 (def ^:private earth-orbital-period 31557600)
 
-(def ^:private orbital-periods
-  {:mercury (* 0.2408467 earth-orbital-period)
-   :venus (* 0.61519726 earth-orbital-period)
-   :mars (* 1.8808158 earth-orbital-period)
-   :earth (* 1 earth-orbital-period)
-   :jupiter (* 11.862615 earth-orbital-period)
-   :saturn (* 29.447498 earth-orbital-period)
-   :uranus (* 84.016846 earth-orbital-period)
-   :neptune (* 164.79132 earth-orbital-period)})
+(def ^:private relative-periods
+  {:mercury 0.2408467
+   :venus 0.61519726
+   :mars 1.8808158
+   :earth 1
+   :jupiter 11.862615
+   :saturn 29.447498
+   :uranus 84.016846
+   :neptune 164.79132})
+
+(def ^:private periods
+  (into {} (for [[k v] relative-periods] [k (#(* earth-orbital-period %) v)])))
 
 (defn- compute-age [planet, seconds]
-  (double
-   (/
-    seconds
-    (planet orbital-periods))))
+  (let [orbital-period (periods planet)]
+    (double (/ seconds orbital-period))))
 
 (defn on-mercury [seconds]
   (compute-age :mercury seconds))
