@@ -7,3 +7,5 @@
   (str (random-initials) (format "%03d" (rand-int 1000))))
 
 (defn robot-name [robot])
+
+(defn reset-name [robot])
