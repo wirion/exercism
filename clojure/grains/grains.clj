@@ -5,4 +5,4 @@
   (math/expt (bigint 2) (- number 1)))
 
 (defn total []
-  (reduce + (for [i (range 1 65)] (square i))))
+  (apply + (for [i (range 1 65)] (square i))))
