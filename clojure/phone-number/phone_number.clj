@@ -1,9 +1,10 @@
-(ns phone-number)
+(ns phone-number
+  (require [clojure.string :as s]))
 
 (def ^:private invalid-number "0000000000")
 
 (defn number [phone-number]
-  (let [filtered-number (apply str (filter #(Character/isDigit %) phone-number))
+  (let [filtered-number (s/replace phone-number #"\D" "")
         filtered-length (count filtered-number)]
     (cond (and (= filtered-length 11)
                (= (first filtered-number) \1)) (subs filtered-number 1)
