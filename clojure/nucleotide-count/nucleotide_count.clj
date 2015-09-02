@@ -6,6 +6,6 @@
     (merge counts (frequencies dna-strand))))
 
 (defn count [nucleotide dna-strand]
-  (do
-    (when-not (#{\G \C \T \A} nucleotide) (throw (Exception. "invalid nucleotide")))
-    ((nucleotide-counts dna-strand) nucleotide)))
+  (when-not (#{\G \C \T \A} nucleotide)
+    (throw (Exception. "invalid nucleotide")))
+  ((nucleotide-counts dna-strand) nucleotide))
