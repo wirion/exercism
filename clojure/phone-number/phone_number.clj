@@ -6,10 +6,10 @@
 (defn number [phone-number]
   (let [filtered-number (s/replace phone-number #"\D" "")
         filtered-length (count filtered-number)]
-    (cond (and (= filtered-length 11)
-               (= (first filtered-number) \1)) (subs filtered-number 1)
-          (= filtered-length 10) filtered-number
-          :else invalid-number)))
+    (condp apply [filtered-length]
+      #(and (= % 11) (= (first filtered-number) \1)) (subs filtered-number 1)
+      #(= % 10) filtered-number
+      invalid-number)))
 
 (defn area-code [phone-number]
   (-> phone-number
