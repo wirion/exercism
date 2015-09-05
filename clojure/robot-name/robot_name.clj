@@ -1,9 +1,19 @@
 (ns robot-name)
 
-(defn- random-initials []
-  (str (char (+ 65 (rand-int 25))) (char (+ 65 (rand-int 25)))))
+;; maybe use a random stream implementation?
+(defn- random-letter []
+  (char (+ 65 (rand-int 25))))
 
+(defn- make-name []
+  (str (random-letter)
+       (random-letter)
+       (format "%03d" (rand-int 1000))))
+
+;; manufacture robot
 (defn robot []
-  (str (random-initials) (format "%03d" (rand-int 1000))))
+  (atom {:name (make-name)}))
 
-(defn robot-name [robot])
+(defn robot-name [robot] (:name @robot))
+
+(defn reset-name [robot]
+  (swap! robot assoc :name (make-name)))
