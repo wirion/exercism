@@ -1,8 +1,10 @@
 (ns robot-name)
 
 ;; maybe use a random stream implementation?
+(def ^:private letters (map char (range 65 91)))
+
 (defn- random-letter []
-  (char (+ 65 (rand-int 26))))
+  (rand-nth letters))
 
 (defn- make-name []
   (str (random-letter)
