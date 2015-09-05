@@ -2,7 +2,7 @@
 
 ;; maybe use a random stream implementation?
 (defn- random-letter []
-  (char (+ 65 (rand-int 25))))
+  (char (+ 65 (rand-int 26))))
 
 (defn- make-name []
   (str (random-letter)
