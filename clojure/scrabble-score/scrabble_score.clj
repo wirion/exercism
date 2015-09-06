@@ -15,14 +15,6 @@
                       (apply #(zipmap %1 (repeat %2)) class))
                     score-classes)))
 
-;; (def ^:private score (merge (zipmap "AEIOULNRST" (repeat 1))
-;;                             (zipmap "DG" (repeat 2))
-;;                             (zipmap "BCMP" (repeat 3))
-;;                             (zipmap "FHVWY" (repeat 4))
-;;                             (zipmap "K" (repeat 5))
-;;                             (zipmap "JX" (repeat 8))
-;;                             (zipmap "QZ" (repeat 10))))
-
 (defn score-letter [letter]
   (letter->score (Character/toUpperCase (first letter))))
 
