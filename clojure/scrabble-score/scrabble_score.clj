@@ -1,5 +1,5 @@
 (ns scrabble-score
-  (:require [clojure.string :refer [upper-case]]))
+  (:require [clojure.string :refer [split upper-case]]))
 
 (def ^:private score-classes
   [["AEIOULNRST" 1]
@@ -24,7 +24,7 @@
 ;;                             (zipmap "QZ" (repeat 10))))
 
 (defn score-letter [letter]
-  (letter->score (Character/toUpperCase letter)))
+  (letter->score (Character/toUpperCase (first letter))))
 
 (defn score-word [word]
-  (apply + (map score-letter word)))
+  (apply + (map score-letter (split word #""))))
