@@ -9,7 +9,10 @@
   (let [triangle [a b c]]
     (if-not (valid? triangle)
       :illogical
-      (let [same-sides (apply max (vals (frequencies triangle)))]
+      (let [same-sides (->> triangle
+                            frequencies
+                            vals
+                            (apply max))]
         (condp = same-sides
           3 :equilateral
           2 :isosceles
