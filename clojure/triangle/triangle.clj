@@ -1,4 +1,5 @@
-(ns triangle)
+(ns triangle
+  (:refer-clojure :exclude [type]))
 
 (defn- valid? [triangle]
   (apply #(> (+ %1 %2) %3)
