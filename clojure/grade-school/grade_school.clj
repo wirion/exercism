@@ -7,4 +7,6 @@
   (db grade-number []))
 
 (defn sorted [db]
-  (into (sorted-map) (for [[grade students] db] [grade (sort students)])))
+  (into (sorted-map)
+        (for [[grade students] db]
+             [grade (sort students)])))
