@@ -1,4 +1,5 @@
 (ns roman-numerals
+  (:require clojure.math.numeric-tower)
   (:refer-clojure :exclude [compare]))
 
 (defn numerals
